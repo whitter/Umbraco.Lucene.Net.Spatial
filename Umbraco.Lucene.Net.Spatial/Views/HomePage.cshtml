@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = null;
+
+    int count = 0;
+
+    var results = UmbracoLuceneNetSpatial.SearchService.Search(out count, 53.480759d, -2.242631d, 5d);
+}
+
+<p>Total Results: @count</p>
+
+<ul>
+    @foreach(var item in results)
+    {
+        <li>@item</li>
+    }
+</ul>
